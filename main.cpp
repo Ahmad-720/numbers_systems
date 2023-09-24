@@ -193,11 +193,19 @@ int main(){
             }
         }
         else if(command.compare("3") == 0){
-            std::cout << decimal_to_hexa(1002) << "\n";
+            int n;
+            int valid_type = scanf("%d",&n);
+            fflush(stdin);
+            if(valid_type == 0){
+                std::cout << "entry must be an integer.\n";
+                continue;
+            }
+            std::cout << decimal_to_hexa(n)<<"\n";
         }
         else if(command.compare("help") == 0){
             std::cout << "1: binary to decimal.\n";
             std::cout << "2: decimal to binary.\n";
+            std::cout << "3: decimal to hexadecimal.\n";
             std::cout << "exit: to exit.\n";
         }
     }
