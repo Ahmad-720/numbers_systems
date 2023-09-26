@@ -152,15 +152,51 @@ char get_hexa(node **H){
     return arr[x];
 }
 
+char decimal_digit_in_hexa(int n){
+    switch(n){
+        case 0:
+        return '0';
+        case 1:
+        return '1';
+        case 2:
+        return '2';
+        case 3:
+        return '3';
+        case 4:
+        return '4';
+        case 5:
+        return '5';
+        case 6:
+        return '6';
+        case 7:
+        return '7';
+        case 8:
+        return '8';
+        case 9:
+        return '9';
+        case 10:
+        return 'A';
+        case 11:
+        return 'B';
+        case 12:
+        return 'C';
+        case 13:
+        return 'D';
+        case 14:
+        return 'E';
+        case 15:
+        return 'F';
+    }
+    return ' ';
+}
+
 std::string decimal_to_hexa(int n){
     std::string result = ""; 
-    std::string tmp;
-    node *head = decimal_to_binary(n);
-    while(!list_is_empty(head)){
-        node *mini = last_four_digits(&head);
-        char x = get_hexa(&mini);
-        tmp = result;
+    while(n > 0){
+        char x = decimal_digit_in_hexa(n%16);
+        std::string tmp = result;
         result = x + tmp;
+        n = n/16;
     }
     return result;
 }
